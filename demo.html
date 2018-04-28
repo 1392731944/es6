@@ -1,0 +1,495 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>标题</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+</head>
+<body>
+
+	<h1>JavaScript分享</h1>
+	
+<script>
+
+	/***** 对象分为 普通对象 和 函数对象 *****/
+
+	// 我们不研究理论，用实例说话：
+
+	var n = 123;
+	var s = 'jdk';
+	var b = true;
+	var a = [];
+	var f = function (){};
+	var o = {};
+	var k = null;
+	var u = undefined;
+
+	// 运算符：typeof 
+	// 返回值：number、string、boolean、undefined、object、function
+
+	/*console.log(typeof n);// number
+	console.log(typeof s);// string
+	console.log(typeof b);// boolean
+	console.log(typeof a);// object
+	console.log(typeof f);// function
+	console.log(typeof o);// object
+	console.log(typeof k);// object
+	console.log(typeof u);// undefined*/
+
+
+	// 为什么null的typeof返回值是Object呢？
+
+
+
+
+
+
+
+	// 其实这是JavaScript最初实现的一个错误，后来被ECMAScript沿用下来。
+
+
+
+
+
+
+
+	// console.log(null == undefined);// ？
+
+
+
+
+
+
+
+
+
+	// ECMAScript认为undefined是从null派生出来的，所以把它们定义为值相等。
+
+
+
+
+
+
+
+
+	/*console.log(n.toString());// '123'
+	console.log(s.substring(1));// 'dk'
+	console.log(b.toString());// 'true'*/
+
+
+	// number、string、boolean类型怎么做到访问对象的方法呢？
+
+
+
+
+
+
+
+	// 属性：constructor（构造函数）
+	// 每个对象都有一个隐藏属性constructor，该属性指向对象的构造函数
+
+	/*console.log(n.constructor);// function Number() { [native code] }
+	console.log(s.constructor);// function String() { [native code] }
+	console.log(b.constructor);// function Boolean() { [native code] }
+	console.log(a.constructor);// function Array() { [native code] }
+	console.log(f.constructor);// function Function() { [native code] }
+	console.log(o.constructor);// function Object() { [native code] }*/
+
+	// console.log(k.constructor);// 报错
+	// console.log(u.constructor);// 报错
+
+
+
+
+
+
+	// (k、u 两个特殊对象，历史遗留问题，不再讨论这哥俩)
+
+
+
+
+
+	// ----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+	// 属性：prototype（原型）
+	// 每个函数对象(Function.prototype除外)都有一个prototype属性，这个属性指向函数的原型对象
+
+	/*var fn1 = function (){};// 函数表达式
+	var fn2 = new Function();// 实例化函数对象
+	function Cat(){}// 函数声明
+
+	console.log(fn1.prototype);// Object {}
+	console.log(fn2.prototype);// Object {}
+	console.log(Cat.prototype);// Object {}
+	console.log(String.prototype);// String {length: 0, [[PrimitiveValue]]: ""}
+	console.log(Function.prototype);// function () {} 这个特殊
+	console.log(Function.prototype.prototype);// undefined*/
+
+
+
+
+
+
+
+	//（fn1.prototype）和（Cat.prototype）等 就是原型对象
+
+
+
+
+
+
+
+	// 给原型对象添加属性
+
+	/*function Cat(){}// 函数声明
+	Cat.prototype.name = '小白';
+	Cat.prototype.color = 'black';
+	Cat.prototype.sayHello = function (){
+		console.log('大家好，我的名字叫'+this.name);
+	}
+	var cat1 = new Cat();
+
+	var obj = Cat.prototype;// 原型对象
+
+	console.log(obj);// Object {name:"小白", color:"black", sayHello: function...}
+
+	console.log(cat1.constructor);// function Cat(){}
+	console.log(obj.constructor);// function Cat(){}*/
+
+
+
+
+
+
+	// 结论：原型对象（Cat.prototype）是 构造函数（Cat）的一个实例。
+	 
+
+
+
+
+
+	 // 还是不好理解？我们换一种写法：
+
+	/*function Cat(){}
+	Cat.prototype = {// 原型对象
+		name: '小白',
+		color: 'black',
+		sayHello: function (){
+			console.log('大家好，我的名字叫'+this.name);
+		}
+	}
+	var cat1 = new Cat();
+
+	console.log(Cat.prototype === cat1.constructor.prototype);*/
+
+
+
+
+
+
+	// console.log(cat1.constructor===Object);
+
+
+
+
+
+
+
+	// 使用对象字面量方式定义的对象，其构造器（constructor）指向的是根构造器Object
+
+
+
+
+
+
+
+	// 原型对象的主要作用是用于继承。
+
+	/*var Person = function(name){
+		this.name = name;
+	};
+	Person.prototype.getName = function(){
+		console.log(this.name);
+	}
+	var p1 = new Person('jack');
+	p1.getName(); //jack */
+
+
+	// 从这个例子可以看出，通过给原型对象(Person.prototype)添加了一个属性(值为函数对象)，
+	// 那么由 Person 实例出来的普通对象（p1）就继承了这个属性(getName)。
+
+
+
+
+
+
+	/*Object.prototype.jdk = 'abc123';
+	Object.prototype.sayHi = function (){
+		console.log('嗨~大家好');
+	}
+	String.prototype.pin = function (){
+		console.log(this+'&biubiu');
+	}
+	var str = 'yoyo';
+	var num = 666;
+	var arr = [];
+
+	str.sayHi();
+	num.sayHi();
+	arr.sayHi();
+
+	str.pin();
+	num.pin();
+	arr.pin();*/
+
+
+
+
+
+
+
+	// 扩展Date对象方法
+	/*Date.prototype.getWeek = function () {
+		var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+		var index = this.getDay();//0-6
+		return arr[index];
+	}
+
+	var dates = new Date();
+	console.log(dates.getWeek());// '星期四'*/
+
+
+
+
+
+
+	// 具体是怎么实现的继承，就要讲到原型链了。
+
+
+	// 属性：__proto__（原型）
+	// 每个对象都有一个隐藏属性__proto__，用于指向创建它的构造函数的原型对象
+
+	/*var n = 123;
+	var s = 'jdk';
+	var b = true;
+	var a = [];
+	var f = function (){};
+	var o = {};
+	var k = null;// 特殊值
+	var u = undefined;// 特殊值
+
+	console.log(n.__proto__);// Number {[[PrimitiveValue]]: 0}
+
+	console.log(n.__proto__===Number.prototype);// true
+
+
+	console.log(s.__proto__===String.prototype);// true
+	console.log(a.__proto__===Array.prototype);// true
+	console.log(f.__proto__===Function.prototype);// true  function (){}
+	console.log(o.__proto__===Object.prototype);// true
+	console.log(b.__proto__===Boolean.prototype);// true*/
+
+
+
+
+	// 函数对象 通过prototype指向原型对象，对象 通过__proto__指向原型对象
+
+
+
+
+
+
+
+	/*var Person = function(name){
+		this.name = name;
+	};
+	Person.prototype.getName = function(){
+		console.log(this.name);
+	}
+	var p1 = new Person('jack');
+
+	// 原型链
+	console.log(p1.__proto__);// Person.prototype
+	console.log(p1.__proto__.__proto__);// Object.prototype
+	console.log(p1.__proto__.__proto__.__proto__);// null */
+
+
+
+	/* p1.__proto__ --> Person.prototype
+					    Person.prototype.__proto__ --> Object.prototype
+					 								   Object.prototype.__proto__ --> null */
+
+
+
+
+
+	/*Object.prototype.jdk = 'abc123';
+	Object.prototype.sayHi = function (){
+		console.log('嗨~大家好');
+	}
+
+	var str = 'yoyo';
+	str.sayHi();// 嗨~大家好
+
+	// hasOwnProperty()判断某个属性是否为该对象本身的一个成员
+
+	console.log(str.hasOwnProperty('sayHi'));// false 自身没有sayHi属性
+	console.log(str.__proto__.hasOwnProperty('sayHi'));// false 上层原型链没有sayHi属性
+	console.log(str.__proto__.__proto__.hasOwnProperty('sayHi'));// true 上上层原型链有sayHi属性并执行*/
+
+
+
+
+
+	// (str.sayHi)-->自身查找-->没有sayHi-->查找原型链str.__proto__-->String.prototype-->没有sayHi
+	//            -->查找原型链String.prototype.__proto__-->Object.prototype-->有sayHi-->执行
+
+	// 函数通过prototype共享属性，对象通过__proto__访问继承的属性 
+
+
+
+
+
+
+
+
+
+	// 《易经》-- ‘太极生两仪，两仪生四象，四象生八卦’
+
+	// 《道德经》-- ‘无，名天地之始’
+
+
+
+
+
+
+
+
+
+	// demo1 对象冒充继承 或 构造函数继承
+	/*function Cat(n,c){
+		this.name=n;
+		this.color=c;
+		this.trait=function (){
+			console.log('卖萌~');
+		}
+	}
+	Cat.prototype.skill=function (){
+		console.log('抓老鼠');
+	}
+
+	function Dog(n,c,f){
+		this.food=f;
+		Cat.call(this,n,c);
+	}
+
+	var dog1=new Dog('二哈','yellow','shi');
+
+	console.log(dog1.name);
+	dog1.trait();
+	dog1.skill();*/
+
+
+
+
+
+
+	// 对象冒充继承 缺点：父类原型上的属性无法继承
+
+
+
+
+
+
+
+	// demo2 原型链继承
+	/*function Cat(n,c){
+		this.name=n;
+		this.color=c;
+		this.trait=function (){
+			console.log('卖萌~');
+		}
+	}
+	Cat.prototype.skill=function (){
+		console.log('抓老鼠');
+	}
+
+	function Dog(n,c,f){
+		this.food=f;
+	}
+
+	Dog.prototype=new Cat();
+
+	var dog1=new Dog('二哈','yellow','shi');
+	console.log(dog1.name);
+	console.log(dog1.food);
+	dog1.trait();
+	dog1.skill();*/
+
+
+	// console.log(dog1.constructor);
+
+
+
+
+
+
+
+	// 原型链继承 缺点：实例化对象时不能给父类传参
+
+
+
+
+
+
+
+
+	// demo3 构造函数继承与原型链继承结合
+	/*function Cat(n,c){
+		this.name=n;
+		this.color=c;
+		this.trait=function (){
+			console.log('卖萌~');
+		}
+	}
+	Cat.prototype.skill=function (){
+		console.log('抓老鼠');
+	}
+
+	function Dog(n,c,f){
+		this.food=f;
+		Cat.call(this,n,c);// 对象冒充继承
+	}
+
+	Dog.prototype=new Cat();// 原型链继承
+
+	Dog.prototype.constructor=Dog;// 指正构造器
+
+	var dog1=new Dog('二哈','yellow','shi');
+
+	console.log(dog1.name);// 二哈
+	console.log(dog1.food);// shi
+	dog1.trait();// 卖萌~
+	dog1.skill();// 抓老鼠
+	console.log(dog1.constructor);// Dog */
+
+
+
+	// 两种方式结合可以实现完美继承
+
+
+
+
+
+
+	// 大家看JQ源码会看到很多关于prototype和constructor的一些操作
+
+</script>
+</body>
+</html>
