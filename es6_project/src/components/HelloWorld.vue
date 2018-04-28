@@ -45,12 +45,12 @@ export default {
    
   for (let i = 0; i < 10; i++) {
     a[i] = function () {
+      let i = "abc"
       console.log(i);
     };
   }
   // a[i] === i
   a[6](); // 6
-
 
 
 
