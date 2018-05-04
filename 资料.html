@@ -97,7 +97,7 @@ IE在第一次浏览器大战中大获全胜，之后很长一段时间都处于
 
 
 问题三：ECMAscript与Javascript有什么关系？我们平常挂在嘴上以及使用最多的Javascript指的是哪一个版本？
-		ECMAscript是Javascript的标准，而Javascript是ECMAscript的一种体现形式，本质上是同一个东西，2009年发布的ECMAScript 5.0
+		ECMAscript是Javascript的标准，而Javascript是ECMAscript的一种体现形式，日常场合两者是可以互换的。2009年发布的ECMAScript 5.0
 
 
 
@@ -114,5 +114,66 @@ ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 J
 因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 Jscript 和 ActionScript）。日常场合，这两个词是可以互换的
 
 阮一峰 《ECMAScript 6入门》
+
+
+我们来看看 var 声明的「创建、初始化和赋值」过程
+
+function fn(){
+	var x = 1
+	var y = 2
+  }
+  fn()
+
+  在执行 fn 时，会有以下过程（不完全）：
+
+进入 fn，为 fn 创建一个环境。
+找到 fn 中所有用 var 声明的变量，在这个环境中「创建」这些变量（即 x 和 y）并将这些变量「初始化」为 undefined。
+开始执行代码
+x = 1 将 x 变量「赋值」为 1
+y = 2 将 y 变量「赋值」为 2
+也就是说 var 声明会在代码执行之前就将「创建变量，并将其初始化为 undefined」。
+
+这就解释了为什么在 var x = 1 之前 console.log(x) 会得到 undefined。
+
+
+fn2()
+
+function fn2(){
+  console.log(2)
+}
+
+JS 引擎会有如下过程：
+
+找到所有用 function 声明的变量，在环境中「创建」这些变量。
+将这些变量「初始化」并「赋值」为 function(){ console.log(2) }。
+开始执行代码 fn2()
+也就是说 function 声明会在代码执行之前就「创建、初始化并赋值」。
+
+接下来看 let 声明的「创建、初始化和赋值」过程
+假设代码如下：
+
+{
+  let x = 1
+  x = 2
+}
+
+找到所有用 let 声明的变量，在环境中「创建」这些变量
+开始执行代码（注意现在还没有初始化）
+执行 x = 1，将 x 「初始化」为 1（这并不是一次赋值，如果代码是 let x，就将 x 初始化为 undefined）
+执行 x = 2，对 x 进行「赋值」
+这就解释了为什么在 let x 之前使用 x 会报错：
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

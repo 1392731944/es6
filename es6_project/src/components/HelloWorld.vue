@@ -2,6 +2,8 @@
   <div class="Index">
     <!-- <h1>{{ title }}</h1> -->
     <el-button @click="test()" type="success">测试按钮</el-button>
+    <p>{{ txt1 }}</p>
+    <p>{{ txt2 }}</p>
   </div>
 </template>
 
@@ -10,6 +12,8 @@ export default {
   data () {
     return { 
       title: 'es6',
+      txt1:'',
+      txt2:''
     }
   },
   created(){
@@ -50,7 +54,7 @@ export default {
       console.log(i);
     };
   }
-  // a[i] === i
+  // a[i]打印出i
   a[6](); // 6
   console.log(i) //ReferenceError: i is not defined */
 
@@ -95,9 +99,10 @@ export default {
     
   let scenario2 = `One winter morning,
       an employee explained why he
-      had shown up for work 45 minutes late.`   
-  // console.log(scenario)
-  // console.log(scenario2)
+      had shown up for work 45 minutes late.`
+
+      this.txt1 = scenario
+      this.txt2 = scenario2
 
   //箭头函数
   
@@ -150,6 +155,12 @@ export default {
       .then(()=> {
         console.log('four')
       })
+
+
+
+
+
+      
 
 
 
