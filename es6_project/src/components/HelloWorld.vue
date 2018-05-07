@@ -21,15 +21,53 @@ export default {
   },
   methods:{
     test(){
-      // let声明的变量只在它所在的代码块有效
-      /* {
+      /* // let,const声明的变量只在它所在的代码块有效
+      {
         let a = 10;
         var b = 1;
+        const c = 2;
       }
       console.log(a) // ReferenceError: a is not defined.
       console.log(b)  //1 */
 
-    let a = [];
+
+      /* // const声明一个只读的常量。一旦声明，常量的值就不能改变
+      const num = 10;
+      // num = 20;
+      console.log(num) */
+
+      /* // let，const不能重复声明已存在的变量
+      var a = "aaa";
+      var a = "AAA"
+      console.log(a) // AAA
+      let b = "bbb";
+      let b = "BBB"
+      console.log(b) //报错 */
+
+      
+      // let,const 有暂时死区，不会被提升
+      /* !function(){
+        console.log(a)
+        console.log(b)
+        console.log(c)
+        let a = "aa"
+        const b = "bb"
+        var c = "cc"
+      }() */
+      // console.log(a)
+      // console.log(c)
+
+      let a = 1;
+      {
+        a = 2;
+        let a = 1;
+        console.log(a)
+      }
+
+
+
+
+    // let a = [];
     
    /*  for (var i = 0;i < 10; i++) {
       a[i] = function () {
@@ -59,11 +97,18 @@ export default {
   console.log(i) //ReferenceError: i is not defined */
 
 
+
+  
+
   //解构赋值
   // let [b,c,d] = [1,2,3];
   // console.log(b)
   // let {e,f,g} = {e:1,f:5,g:6}
   // console.log(e)
+
+
+
+
 
   //默认参数
   /* var link = function (height, color, url) {  
@@ -83,6 +128,11 @@ export default {
   }
   linkTwo(30) */
 
+
+
+
+
+
   // 模板对象
   /* var name = 'Your name is ' + first + ' ' + last + '.';  
   var url = 'http://localhost:3000/api/messages/' + id;
@@ -90,6 +140,10 @@ export default {
 
   var name = `Your name is ${first} ${last}.`;  
   var url = `http://localhost:3000/api/messages/${id}`; */
+
+
+
+
 
 
   // 多行字符串
@@ -105,6 +159,11 @@ export default {
       this.txt2 = scenario2 */
 
   //箭头函数
+
+
+
+
+
   
 
   //Promises
@@ -138,7 +197,7 @@ export default {
   //   }, 1000)  
   // }, 1000);
   
-  let wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)});
+  /* let wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)});
   // let wait1000 = function() {
   //   return new Promise(function(resolve,reject) {
   //     return setTimeout(resolve,1000)
@@ -159,7 +218,7 @@ export default {
       })
       .then(()=> {
         console.log('four')
-      })
+      }) */
 
 
 
