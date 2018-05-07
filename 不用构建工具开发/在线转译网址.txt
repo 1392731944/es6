@@ -1,0 +1,1 @@
+https://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=IQMwrgdgxgLglgewgAgBQEpkG8BQz8GH6oYC8AfNnkTYVEgM4IA2ApgHTMIDmqA5AzBQorBgz7pqtAgF90GKURkYgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&lineWrap=true&presets=es2015%2Ces2016%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=
