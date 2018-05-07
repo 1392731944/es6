@@ -93,7 +93,7 @@ export default {
 
 
   // 多行字符串
-  var scenario = 'One winter morning,'  
+  /* var scenario = 'One winter morning,'  
       + 'an employee explained why he '
       + 'had shown up for work 45 minutes late.' 
     
@@ -102,7 +102,7 @@ export default {
       had shown up for work 45 minutes late.`
 
       this.txt1 = scenario
-      this.txt2 = scenario2
+      this.txt2 = scenario2 */
 
   //箭头函数
   
@@ -138,7 +138,12 @@ export default {
   //   }, 1000)  
   // }, 1000);
   
-  let wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)});  
+  let wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)});
+  // let wait1000 = function() {
+  //   return new Promise(function(resolve,reject) {
+  //     return setTimeout(resolve,1000)
+  //   })
+  // }  
   wait1000()  
       .then(()=> {  
         console.log('one')  
