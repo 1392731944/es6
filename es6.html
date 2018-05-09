@@ -8,53 +8,33 @@
 </head>
 <body>
     <script>
+      /* // let,const 有暂时死区，不会被提升
+        !function(){
+        console.log(a)
+        console.log(b)
+        console.log(c)
+        var a = "aa"
+        let b = "bb"
+        const c = "cc"
         // console.log(a)
-        // let a = "aa"
+        // console.log(b)
+        // console.log(c)
+      }() */
+
+      var a = 1;
+      let b = 1;
+      !function(){
+        // a = 2;
+        // b = 2;
+        console.log(a)
+        console.log(b)
+        var a = 3;
+        // let b = 3;
         // console.log(a)
-    //     let a = 1;
-    //   {
-    //     a = 2;
-    //     let a = 1;
-    //     console.log(a)
-    //   }
-    /* let a = [];
-    for (let i = 0; i < 10; i++) {
-    a[i] = function () {
-    //   let i = "abc"
-      console.log(i);
-    };
-  }
-  // a[i]打印出i
-  a[8](); // 6
-//   console.log(i) //ReferenceError: i is not defined */
+        // console.log(b)
+      }()
 
 
-
-
-
-
-let wait1000 = ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)});
-  // let wait1000 = function() {
-  //   return new Promise(function(resolve,reject) {
-  //     return setTimeout(resolve,1000)
-  //   })
-  // }  
-  wait1000()  
-      .then(()=> {  
-        console.log('one')  
-        return wait1000()  
-      })  
-      .then(()=> {  
-        console.log('two')
-        return wait1000()  
-      })
-      .then(()=> {
-        console.log('three')
-        return wait1000()
-      })
-      .then(()=> {
-        console.log('four')
-      })
     </script>
 </body>
 </html>
