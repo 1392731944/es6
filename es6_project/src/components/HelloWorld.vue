@@ -30,12 +30,6 @@ export default {
       console.log(a) // 10
       console.log(b)  //ReferenceError: b is not defined. */
 
-
-      /* // const声明一个只读的常量。一旦声明，常量的值就不能改变
-      const num = 10;
-      // num = 20;
-      console.log(num)//报错 */
-
       /* // let，const不能重复声明已存在的变量
       var a = "aaa";
       var a = "AAA"
@@ -43,16 +37,6 @@ export default {
       let b = "bbb";
       // let b = "BBB"
       console.log(b) //报错 */
-
-
-      let a = 1;
-      {
-        // a = 2;
-        console.log(a)
-        let a = 1;
-        // console.log(a)
-      }
-
 
 
 
@@ -90,12 +74,18 @@ export default {
   
 
   //解构赋值
-  // let [b,c,d] = [1,2,3];
-  // console.log(b)
-  // let {e,f,g} = {e:1,f:5,g:6}
-  // console.log(e)
 
-
+  /* // 以前，为变量赋值，只能直接指定值
+  let a = 1;
+  let b = 2;
+  let c = 3;
+  // ES6允许写成下面这样
+  let [a,b,c] = [1,2,3];
+  console.log(b)
+  let object = {d:4,e:5,f:6}
+  let {d,e,f} = {d:4,e:5,f:6}
+  console.log(object.d)
+  console.log(e) */
 
 
 
@@ -116,8 +106,6 @@ export default {
     console.log(url)
   }
   linkTwo(30) */
-
-
 
 
 

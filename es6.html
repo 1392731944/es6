@@ -21,9 +21,9 @@
         // console.log(c)
       }() */
 
-      var a = 1;
+      /* var a = 1;
       let b = 1;
-      !function(){
+      (function(){
         // a = 2;
         // b = 2;
         console.log(a)
@@ -32,8 +32,69 @@
         // let b = 3;
         // console.log(a)
         // console.log(b)
-      }()
+      })() */
 
+      /* // 作用域构造
+      var year = 1840;
+      (function () {
+        var time = new Date()
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var date = time.getDate();
+        var hour = time.getHours();
+        var min = time.getMinutes();
+        var sec = time.getSeconds();
+        var currTime = `${year}/${month}/${date} ${hour}:${min}:${sec}`
+        document.write(currTime)
+      })()
+      console.log(year)
+
+      {
+        let time = new Date()
+        let year = time.getFullYear();
+        let month = time.getMonth() + 1;
+        let date = time.getDate();
+        let hour = time.getHours();
+        let min = time.getMinutes();
+        let sec = time.getSeconds();
+        let currTime = `${year}/${month}/${date} ${hour}:${min}:${sec}`
+        document.write(currTime)
+      }
+      console.log(year) */
+
+      /* // ES6 允许块级作用域的任意嵌套
+      {{{{{let insane = 'Hello World'}}}}};
+      
+      // 外层作用域无法读取内层作用域的变量
+      {{{{
+        {let insane = 'Hello World'}
+        console.log(insane); // 报错
+      }}}}; */
+
+      /* // 顶层对象的属性
+      window.a = 1;
+      console.log(a) // 1
+      a = 2;
+      console.log(window.a) //2
+      
+      let b = 3;
+      console.log(b)
+      b = 4;
+      console.log(window.b) */
+      
+      /* Object.defineProperty(window,"a",{
+        value:10,
+        writable:false
+      })
+      window.a = 20;
+      console.log(window.a)
+
+      const b = 30;
+      b = 50; //报错 */
+
+      
+
+      
 
     </script>
 </body>
